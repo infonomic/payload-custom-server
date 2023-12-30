@@ -1,7 +1,7 @@
 'use client'
 
 export function PageActions(): JSX.Element {
-  const handleClick = async (): Promise<void> => {
+  const handlePostClick = async (): Promise<void> => {
     await fetch('/api/test-post', {
       method: 'POST',
       headers: {
@@ -10,14 +10,30 @@ export function PageActions(): JSX.Element {
       body: JSON.stringify({ foo: 'bar' }),
     })
   }
+
+  const handleGetClick = async (): Promise<void> => {
+    await fetch('/api/test-get', {
+      method: 'GET',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    })
+  }
   return (
-    <div>
+    <div style={{ display: 'flex', gap: '16px' }}>
       <button
         onClick={() => {
-          void handleClick()
+          void handlePostClick()
         }}
       >
-        Test API Call
+        Test POST API Call
+      </button>
+      <button
+        onClick={() => {
+          void handleGetClick()
+        }}
+      >
+        Test GET API Call
       </button>
     </div>
   )
