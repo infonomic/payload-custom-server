@@ -22,6 +22,10 @@ export default buildConfig({
       beforeLogin: [BeforeLogin],
     },
   },
+  routes: {
+    admin: '/admin',
+    api: '/papi',
+  },
   editor: slateEditor({}),
   db: mongooseAdapter({
     url: process.env.DATABASE_URI,
